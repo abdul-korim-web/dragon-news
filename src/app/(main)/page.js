@@ -1,4 +1,5 @@
 import CategoriesList from "@/components/CategoriesList";
+import FindOnUs from "@/components/FindOnUs";
 import SocialLogin from "@/components/SocialLogin";
 import Image from "next/image";
 
@@ -11,6 +12,7 @@ export default function Home() {
       <div className=" col-span-6 ">Dragon News Home</div>
       <div className=" col-span-3">
         <SocialLogin/>
+        <FindOnUs/>
       </div>
     </div>
   );
