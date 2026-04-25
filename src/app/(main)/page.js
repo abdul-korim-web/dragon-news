@@ -1,5 +1,6 @@
 import CategoriesList from "@/components/CategoriesList";
 import FindOnUs from "@/components/FindOnUs";
+import Galary from "@/components/Galary";
 import SocialLogin from "@/components/SocialLogin";
 import Image from "next/image";
 
@@ -13,6 +14,7 @@ export default function Home() {
       <div className=" col-span-3">
         <SocialLogin/>
         <FindOnUs/>
+        <Galary/>
       </div>
     </div>
   );
