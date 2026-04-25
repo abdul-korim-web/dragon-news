@@ -53,7 +53,7 @@ const Navbar = () => {
         </Link>
 
         <div className="flex items-center space-x-3 pt-3 border-t">
-          <Image src={userLogo} alt="userLogo" width={35} height={35} />
+          <Image loading="eager" src={userLogo} alt="userLogo" width={35} height={35} />
           <Button className="bg-[#403F3F] text-white px-4 py-2 rounded-[8px] w-full">
             Login
           </Button>
