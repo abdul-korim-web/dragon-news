@@ -1,4 +1,5 @@
 import CategoriesList from "@/components/CategoriesList";
+import SocialLogin from "@/components/SocialLogin";
 import Image from "next/image";
 
 export default function Home() {
@@ -8,7 +9,9 @@ export default function Home() {
         <CategoriesList/>
       </div>
       <div className=" col-span-6 ">Dragon News Home</div>
-      <div className=" col-span-3">login</div>
+      <div className=" col-span-3">
+        <SocialLogin/>
+      </div>
     </div>
   );
 }
