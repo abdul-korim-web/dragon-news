@@ -1,13 +1,17 @@
-import React from "react";
+"use client"
 import {Button, Input, Label} from "@heroui/react";
 import Link from "next/link";
+import { registerAction } from "./registerAction";
+import RegisterButton from "./registerButton";
+
 
 const Register = () => {
+
     return (
         <div className="flex flex-col min-h-screen justify-center items-center ">
              <div className="bg-white p-10 rounded-2xl shadow-2xl flex flex-col space-y-10">
                  <h2 className="text-2xl  text-center font-bold text-[#403F3F]">Register your account</h2>
-              <form action="">
+              <form onSubmit={registerAction}>
                 <div className="flex w-100 flex-col gap-4">
                   <div className="flex flex-col gap-1">
                     <Label htmlFor="input-type-email">Your Name</Label>
@@ -20,7 +24,7 @@ const Register = () => {
                   <div className="flex flex-col gap-1">
                     <Label htmlFor="input-type-email">Photo URL</Label>
                     <Input
-                      name="profileImage"
+                      name="image"
                       placeholder="Enter your profile image url"
                       type="text"
                     />
@@ -43,7 +47,7 @@ const Register = () => {
                     />
                   </div>
                   <div className="mt-3" >
-                    <Button type="submit" className={`w-full rounded-sm bg-[#403F3F]`}>Register</Button>
+                   <RegisterButton/>
                   </div>
                 </div>
               </form>
