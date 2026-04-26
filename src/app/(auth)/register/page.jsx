@@ -28,6 +28,7 @@ const Register = () => {
                   <div className="flex flex-col gap-1">
                     <Label htmlFor="input-type-email">Email address</Label>
                     <Input
+                    
                       name="email"
                       placeholder="abdul@example.com"
                       type="email"
