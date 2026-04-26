@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const NewsCard = ({ newsData }) => {
@@ -66,9 +67,9 @@ const NewsCard = ({ newsData }) => {
               )}
               <p className="text-sm text-gray-600">
                 {item.details.slice(0, 150)}...
-                <span className="text-orange-500 font-medium cursor-pointer ml-1">
+                <Link href={`/news/${item?._id}`} className="text-orange-500 font-medium cursor-pointer ml-1">
                   Read More
-                </span>
+                </Link>
               </p>
               <div className="flex items-center justify-between text-sm text-gray-500">
                 <span>👁 {item?.total_view || 0} views</span>
