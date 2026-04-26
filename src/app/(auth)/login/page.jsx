@@ -8,7 +8,7 @@ const Login = () => {
      <div className="bg-white p-10 rounded-2xl shadow-2xl flex flex-col space-y-10">
          <h2 className="text-2xl  text-center font-bold text-[#403F3F]">Login your account</h2>
       <form action="">
-        <div className="flex w-80 flex-col gap-4">
+        <div className="flex w-100 flex-col gap-4">
           <div className="flex flex-col gap-1">
             <Label htmlFor="input-type-email">Email address</Label>
             <Input
