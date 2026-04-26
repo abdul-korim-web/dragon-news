@@ -2,7 +2,7 @@ import Link from 'next/link';
 import React, { use } from 'react';
     const res =  fetch("https://openapi.programming-hero.com/api/news/categories").then(res=>res.json())
 
-const CategoriesList = () => {
+const CategoriesList = async() => {
     // console.log(getCatrgorie());
     const data = use(res)
     return (

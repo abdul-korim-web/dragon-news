@@ -13,7 +13,7 @@ const getNews = async(category_id)=>{
 }
 export default async  function Home() {
   const newsData = await getNews("01")
-  console.log(newsData);
+  // console.log(newsData);
   return (
     <div className="px-5 container mx-auto grid grid-cols-12 my-20">
       <div className="col-span-3">
