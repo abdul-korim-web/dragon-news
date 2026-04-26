@@ -11,8 +11,9 @@ const getNews = async(category_id)=>{
   // console.log("data", data);
   return data?.data
 }
-export default async  function Home() {
-  const newsData = await getNews("01")
+export default async  function Home({params}) {
+    const {id} = await params
+  const newsData = await getNews(id)
   console.log(newsData);
   return (
     <div className="px-5 container mx-auto grid grid-cols-12 my-20">
@@ -20,7 +21,7 @@ export default async  function Home() {
         <CategoriesList/>
       </div>
       <div className=" col-span-6 ">
-        <NewsCard newsData={newsData}/>
+        <NewsCard newsData = {newsData} />
       </div>
       <div className=" col-span-3">
         <SocialLogin/>
