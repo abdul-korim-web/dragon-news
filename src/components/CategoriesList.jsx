@@ -1,10 +1,15 @@
 import Link from 'next/link';
 import React, { use } from 'react';
-    const res =  fetch("https://openapi.programming-hero.com/api/news/categories").then(res=>res.json())
+    const getData = async()=>{
+        const res = await fetch("https://openapi.programming-hero.com/api/news/categories")
+        const data =await res.json()
+        return data
+    }
 
 const CategoriesList = async() => {
     // console.log(getCatrgorie());
-    const data = use(res)
+    const data =await getData()
+    console.log('data', data)
     return (
         <div className='flix flex-col space-y-3'>
             <h2 className='text-[#403f3f] text-xl font-semibold '>All Categorie</h2>
