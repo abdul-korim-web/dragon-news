@@ -6,17 +6,20 @@ import React, { useState } from "react";
 import userLogo from "@/assets/user.png";
 import Image from "next/image";
 import { Button } from "@heroui/react";
+import { signOut, useSession } from "../lib/auth-client";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
-    
   const [isOpen, setIsOpen] = useState(false);
 
   const handleClose = () => setIsOpen(false);
+  const { data, isPending } = useSession();
+  const userData = data?.user;
+  const router = useRouter()
 
   return (
     <div className="container mx-auto px-5 mt-5">
       <div className="flex justify-between items-center">
-        
         <div className="text-xl font-bold"></div>
         <div className="hidden md:flex space-x-6 text-[#706F6F] text-[18px] items-center">
           <Link href="/">Home</Link>
@@ -24,22 +27,55 @@ const Navbar = () => {
           <Link href="/career">Career</Link>
         </div>
         <div className="hidden md:flex space-x-3 items-center">
-          <Image src={userLogo} alt="userLogo" width={40} height={40} />
-          <Button className="bg-[#403F3F] text-white font-semibold py-2 px-6 rounded-[8px]">
-            Login
-          </Button>
+          {isPending ? (
+            <span>Loading...</span>
+          ) : userData ? (
+            <>
+              <span className="font-medium">{userData?.name}</span>
+              <Image
+                src={userData?.image || userLogo}
+                alt="user"
+                width={40}
+                height={40}
+                className="rounded-full"
+              />
+              <Button
+                onClick={() =>
+                  signOut({
+                    fetchOptions: {
+                      onSuccess: () => {
+                        router.push("/login"); // redirect to login page
+                      },
+                    },
+                  })
+                }
+                className="bg-[#403F3F] text-white font-semibold py-2 px-6 rounded-[8px]"
+              >
+                Logout
+              </Button>
+            </>
+          ) : (
+            <>
+              <Image src={userLogo} alt="userLogo" width={40} height={40} />
+              <Link href={`/login`} className="bg-[#403F3F] text-white font-semibold py-2 px-6 rounded-[8px]">
+                Login
+              </Link>
+            </>
+          )}
         </div>
         <button
           className="md:hidden text-2xl"
           onClick={() => setIsOpen(!isOpen)}
         >
-          {isOpen ? (<FaRegWindowClose />) : (<GiHamburgerMenu />)}
+          {isOpen ? <FaRegWindowClose /> : <GiHamburgerMenu />}
         </button>
       </div>
 
       <div
         className={`md:hidden mt-4 bg-[#f3f3f3] p-4 rounded-xl space-y-4 transition-all duration-300 ${
-          isOpen ? "max-h-[300px] opacity-100" : "max-h-0 overflow-hidden opacity-0"
+          isOpen
+            ? "max-h-[300px] opacity-100"
+            : "max-h-0 overflow-hidden opacity-0"
         }`}
       >
         <Link href="/" className="block py-2" onClick={handleClose}>
@@ -53,10 +89,47 @@ const Navbar = () => {
         </Link>
 
         <div className="flex items-center space-x-3 pt-3 border-t">
-          <Image loading="eager" src={userLogo} alt="userLogo" width={35} height={35} />
-          <Button className="bg-[#403F3F] text-white px-4 py-2 rounded-[8px] w-full">
-            Login
-          </Button>
+          {isPending ? (
+            <span>Loading...</span>
+          ) : userData ? (
+            <>
+              <span className="font-medium">{userData?.name}</span>
+              <Image
+                src={userData?.image || userLogo}
+                alt="user"
+                width={40}
+                height={40}
+                className="rounded-full"
+              />
+              <Button
+                onClick={() =>
+                  signOut({
+                    fetchOptions: {
+                      onSuccess: () => {
+                        router.push("/login"); // redirect to login page
+                      },
+                    },
+                  })
+                }
+                className="bg-[#403F3F] text-white font-semibold py-2 px-6 rounded-[8px]"
+              >
+                Logout
+              </Button>
+            </>
+          ) : (
+            <>
+              <Image
+                loading="eager"
+                src={userLogo}
+                alt="userLogo"
+                width={35}
+                height={35}
+              />
+              <Link href={`/login`} className="bg-[#403F3F] text-white font-semibold py-2 px-6 rounded-[8px]">
+                Login
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </div>
