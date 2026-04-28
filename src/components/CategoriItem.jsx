@@ -8,7 +8,7 @@ const CategoriItem = ({item}) => {
     const activeId = pathName.split("/")[2]
     return (
         <div>
-            <Link href={`/categorie/${item?.category_id}`} className={`w-[70%] text-[#9f9f9f] block text-xl font-medium  ${item?.category_id ==activeId ? "bg-blue-600 p-2 text-white rounded-2xl" :""}`}>{item?.category_name}</Link>
+            <Link href={`/categorie/${item?.category_id}`} className={`w-[70%] text-[#9f9f9f]  text-xl font-medium  ${item?.category_id ==activeId ? "bg-blue-600 p-2 xl:block text-white rounded-2xl" :""}`}>{item?.category_name}</Link>
         </div>
     );
 }

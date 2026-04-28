@@ -26,7 +26,7 @@ const Login = () => {
     setLoading(false)
   };
   return (
-    <div className="flex flex-col min-h-screen justify-center items-center ">
+    <div className="flex flex-col min-h-screen justify-center items-center px-5 ">
       <div className="bg-white p-10 rounded-2xl shadow-2xl flex flex-col space-y-10">
         <h2 className="text-2xl  text-center font-bold text-[#403F3F]">
           Login your account

@@ -12,9 +12,9 @@ const CategoriesList = async() => {
     const data =await getData()
     // console.log('data', data)
     return (
-        <div className='flix flex-col space-y-3'>
+        <div className='flix flex-col space-y-3 mx-5'>
             <h2 className='text-[#403f3f] text-xl font-semibold '>All Categorie</h2>
-            <ul className='flex flex-col space-y-5 '>
+            <ul className='flex xl:flex-col gap-3  flex-wrap   '>
                 {data?.data?.news_category.map((item,index)=>(
                     // <Link href={`/categorie/${item?.category_id}`} className={`text-[#9f9f9f] text-xl font-medium `} key={index}>{item?.category_name}</Link>
                     <CategoriItem item={item} key={index}/>
