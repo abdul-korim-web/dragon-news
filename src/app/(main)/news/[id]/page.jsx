@@ -8,6 +8,20 @@ const getNews = async (id) => {
   return data;
 };
 
+export async function generateMetadata({ params }) {
+  const { id } =await params;
+
+  const res = await fetch(
+    `https://openapi.programming-hero.com/api/news/${id}`
+  );
+  const data = await res.json()
+  const news = data?.data[0];
+
+  return {
+    title: news?.title || "News Details",
+    description: news?.details?.slice(0, 150) || "News details page",
+  };
+}
 const Page = async ({ params }) => {
   const { id } = await params;
 
