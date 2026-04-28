@@ -9,14 +9,18 @@ const getNews = async (id) => {
 };
 
 const Page = async ({ params }) => {
-  const { id } =await params;
+  const { id } = await params;
 
   const data = await getNews(id);
-  const news = data?.data[0]; 
+  const news = data?.data[0];
 
   return (
-    <div className="max-w-3xl mx-auto py-10 space-y-6">
-      <h1 className="text-2xl font-bold">{news?.title}</h1>
+    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 space-y-6">
+      
+      <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold leading-snug">
+        {news?.title}
+      </h1>
+
       <div className="flex items-center gap-3">
         <Image
           src={news?.author?.img}
@@ -26,33 +30,37 @@ const Page = async ({ params }) => {
           className="rounded-full"
         />
         <div>
-          <p className="font-medium">{news?.author?.name}</p>
-          <p className="text-sm text-gray-500">
+          <p className="font-medium text-sm sm:text-base">
+            {news?.author?.name}
+          </p>
+          <p className="text-xs sm:text-sm text-gray-500">
             {news?.author?.published_date}
           </p>
         </div>
       </div>
 
-      {/* Image */}
-      <div className="w-full h-[300px] relative">
+      <div className="w-full h-[200px] sm:h-[300px] md:h-[400px] relative">
         <Image
-          src={news?.image_url || "https://firehouseshelter.com/wp-content/themes/kronos/assets/images/news-placeholder.jpg"}
+          src={
+            news?.image_url ||
+            "https://firehouseshelter.com/wp-content/themes/kronos/assets/images/news-placeholder.jpg"
+          }
           alt="news"
           fill
-          loading="lazy"
+          sizes="(max-width: 768px) 100vw, 800px"
           className="object-cover rounded-lg"
         />
       </div>
 
-      {/* Details */}
-      <p className="text-gray-700">{news?.details}</p>
+      <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
+        {news?.details}
+      </p>
 
-      {/* Footer */}
-      <div className="flex justify-between text-sm text-gray-500">
+      <div className="flex flex-col sm:flex-row sm:justify-between gap-2 text-xs sm:text-sm text-gray-500">
         <span>👁 {news?.total_view} views</span>
         <span>⭐ {news?.rating?.number}</span>
       </div>
-
+      
     </div>
   );
 };
